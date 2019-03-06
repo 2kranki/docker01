@@ -5,5 +5,5 @@ sleep 30s
 
 /usr/src/app/load.sh
 /usr/src/app/teachLoad.sh
-/usr/src/app/tsqlLoad.sh
+#/usr/src/app/tsqlLoad.sh
 
