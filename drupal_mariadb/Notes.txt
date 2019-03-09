@@ -1,0 +1,24 @@
+# This was an investigation of combining drupal and a mariaDB as a docker-compose
+# multi-container application.  It is from Docker Mastery at udemy.com.  The
+# original problem called for using postgre instead of mariaDB, but I wanted a
+# little experience using mariaDB (a fork of MySQL).
+
+# So, I started out looking at the docker hub pages for drupal and mariab.  Since
+# I had not worked with drupal before, I also read their wikipedia page,
+# https://en.wikipedia.org/wiki/Drupal
+# Docker Hub: https://hub.docker.com/_/drupal
+#        and: https://hub.docker.com/_/mariadb
+
+# From those, I was able to start developing the yml file.  I knew that this would
+# only be a yml file exercise. Since I had already done one yml file and the doc from
+# above, I was able to pretty much piece together the rest of it.  So, the CLI
+# commands from this directory are:
+
+        docker-compose up
+# This left it attached to my terminal and I could watch all the log message. Then,
+# I started a browser for: http://localhost:8080
+# answered all the questions and bingo, drupal was running!  Woohoo!
+# To shut it down, I did:
+        ^C (Ctrl-C)
+        docker-compose down -v
+# The -v get rid of the volume that was created and I was done.

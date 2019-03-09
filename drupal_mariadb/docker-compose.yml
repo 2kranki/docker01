@@ -1,0 +1,22 @@
+# Drupal/mariaDB multi-container application
+
+version:    "3"
+ 
+services:
+    drupal:
+        image:  drupal:latest
+        ports:  ["8080:80"]
+        volumes:
+            - /var/www/html/modules
+            - /var/www/html/profiles
+            - /var/www/html/themes
+            - /var/www/html/sites
+        depends_on: ["mariadb"]
+        restart: always
+    mariadb:
+        image: mariadb:latest
+        environment:
+            MYSQL_ROOT_PASSWORD: "Passw0rd!"
+        ports:  ["3606:3606"]
+        restart: always
+
