@@ -1,0 +1,39 @@
+# Drupal/mariaDB multi-container application
+# This does not use a separate html site since we
+# build it into the application from bootstrap
+#
+# Docker Hub: https://hub.docker.com/_/drupal
+#        and: https://hub.docker.com/_/mariadb
+
+
+version:    "3"
+ 
+services:
+    drupal:
+        build:
+            context: .
+            dockerfile: Dockerfile.txt
+        image:  drupal-custom
+        ports:  ["8080:80"]
+        volumes:
+            - drupalm:/var/www/html/modules
+            - drupalp:/var/www/html/profiles
+            - drupalt:/var/www/html/themes
+            - drupals:/var/www/html/sites
+        depends_on: ["mariadb"]
+        restart: always
+    mariadb:
+        image: mariadb:10.4
+        environment:
+            MYSQL_ROOT_PASSWORD: "Passw0rd!"
+        ports:  ["3606:3606"]
+        volumes:
+            - drupal-data:/var/lib/mysql
+        restart: always
+volumes:
+    drupal-data:
+    drupalm:
+    drupalp:
+    drupalt:
+    drupals:
+

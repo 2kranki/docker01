@@ -1,0 +1,37 @@
+# This was an investigation of combining drupal and a mariaDB as a docker-compose
+# multi-container application.  It is from Docker Mastery at udemy.com.  The
+# original problem called for using postgre instead of mariaDB, but I wanted a
+# little experience using mariaDB (a fork of MySQL).  This assignment has a 
+# twist from the prior one in that we want to preload twitter's bootstrap into
+# drupal which requires us to build a drupal container with it in it.
+
+# So, I started out looking at the docker hub pages for drupal and mariab.  Since
+# I had not worked with drupal before, I also read their wikipedia page,
+# https://en.wikipedia.org/wiki/Drupal
+# Docker Hub: https://hub.docker.com/_/drupal
+#        and: https://hub.docker.com/_/mariadb
+
+# I took the yml file from the previous exercise and copied it here.  I used his
+# notes to create the docker file and work on the yml file.  My big mistake was
+# that initially I pointed all the volume references to one volume.  When drupal
+# started, it did not have read/write ability for a couple of its files.  I checked
+# what he did and he had each one to a separate volume.  I corrected my yml to do
+# the same and everything then worked. I asked about it and the reply was
+# "when docker mounts a volume on container start, that volume temporarily overwrite
+# the directory and anything below it, so if you try to do a single volume at the 
+# root of drupal, then files that need to be there won't be, and drupal will fail. 
+# Drupal requires that you create new volumes just for the specific directories that 
+# contain persistent/unique data."  So, now I know why it didn't work.
+
+# So, the CLI commands from this directory are:
+
+        docker-compose up
+# This left it attached to my terminal and I could watch all the log message. Then,
+# I started a browser for: http://localhost:8080
+# answered all the questions and bingo, drupal was running!  Woohoo!
+# To shut it down, I did:
+        ^C (Ctrl-C)
+        docker-compose down -v
+# The -v gets rid of all the volumes that were created and I was done.  If you 
+# leave off the -v, the data will be retained and you will not have to go
+# through the initialization process again.
