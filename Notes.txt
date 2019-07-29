@@ -1,0 +1,6 @@
+# When using swarms, consider using:
+https://github.com/dockersamples/docker-swarm-visualizer
+# Gives you a nice graphical display of the containers
+# running in the swarm and what nodes that they are currently
+# on.
+
