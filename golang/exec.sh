@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-docker container exec -it  mariadb1 bash
+docker container exec -it  golang1 bash
 
 

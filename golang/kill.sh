@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-docker container rm -f mariadb1
+docker container rm -f golang1
 
 
