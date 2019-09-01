@@ -7,6 +7,10 @@
 
 docker image pull ubuntu:latest
 
+docker image pull golang:latest
+
+docker image pull rsmmr/clang
+
 docker image pull postgres:latest
 
 docker image pull redis:latest
@@ -19,13 +23,13 @@ docker image pull docker:latest
 
 docker image pull nginx:latest
 
-docker image pull jenkins:latest
+docker image pull jenkins/jenkins:latest
 
 docker image pull mysql:5.7
 
 docker image pull httpd:latest
 
-docker image pull mcr.microsoft.com/mssql/server:2017-latest
+docker image pull mcr.microsoft.com/mssql/server:2017-latest-ubuntu
 
 docker image pull sonarqube:latest
 
